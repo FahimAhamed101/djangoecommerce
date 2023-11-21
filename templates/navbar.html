@@ -1,0 +1,67 @@
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Eshop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        
+               <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 menu
+                 </a>
+          <ul class="dropdown-menu">
+            {% for category in all_categories %}
+            <li><a class="dropdown-item" href="{{category.get_absolute_url}}">{{category.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      
+      </ul>
+
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      <div>
+        {% if user.is_authenticated  %}
+
+        <a class="nav-link " href="{% url "logout" %}" >
+         Logout
+        </a>
+
+        {% else %}
+        <a class="nav-link" href="{% url "login" %}" >
+          login
+        </a>
+        {% endif %}
+        <a type="button"   href="{% url 'cart-summary' %}" role="button"  class="btn btn-outline-success" > 
+             <i class="fa-solid fa-cart-shopping"></i> 
+             <div id="cart-qty">
+             {% with qty_amount=cart|length %}
+
+              {% if qty_amount > 0 %}
+
+              {{ qty_amount }}
+
+              {% else %}
+              0
+              {% endif %}
+              
+             {% endwith %}
+      
+          </div>
+     
+        
+        </a>
+      </div>
+      </form>
+      
+    </div>
+  </div>
+</nav>

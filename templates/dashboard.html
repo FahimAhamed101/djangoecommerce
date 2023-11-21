@@ -1,0 +1,18 @@
+<h1>dashboard</h1>
+<div>{{user}}</div>
+<div class="container bg-white shadow-md p-5 form-layout">
+    <hr>
+    <p>This is the dasboard for managing order</p>
+    <li>Track your order</li>
+    <li>manage your account</li>
+    <li>Logout your account</li>
+
+</div>
+<div class="container bg-white shadow-md p-5 form-layout">
+   
+    <a href="" class="btn btn-alert navbar-btn text-white ">Track your order</a>
+
+    <a href="{% url "profile" %}" class="btn btn-alert navbar-btn text-white ">manage your account</a>
+    <a href="{% url "logout" %}" class="btn btn-alert navbar-btn text-white ">Logout</a>
+    
+</div>
